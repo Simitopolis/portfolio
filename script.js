@@ -37,12 +37,40 @@ window.addEventListener("scroll", () => {
 
 const navLinks = document.querySelectorAll(".navMenu a");
 
+const sections = document.querySelectorAll(
+  "#home, #about, #projects, #contact"
+);
+
+function setActiveLink(sectionId) {
+  navLinks.forEach((link) => {
+    link.classList.toggle(
+      "active",
+      link.getAttribute("href") === `#${sectionId}`
+    );
+  });
+}
+
 navLinks.forEach((link) => {
   link.addEventListener("click", () => {
-    navLinks.forEach((item) => {
-      item.classList.remove("active");
-    });
-
-    link.classList.add("active");
+    const sectionId = link.getAttribute("href").replace("#", "");
+    setActiveLink(sectionId);
   });
 });
+
+function updateActiveSection() {
+  let currentSection = "home";
+
+  sections.forEach((section) => {
+    const sectionTop = section.offsetTop - 150;
+
+    if (window.scrollY >= sectionTop) {
+      currentSection = section.id;
+    }
+  });
+
+  setActiveLink(currentSection);
+}
+
+window.addEventListener("scroll", updateActiveSection);
+
+updateActiveSection();
