@@ -190,14 +190,7 @@ li {
 }
 
 .navMenu a.active::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -10px;
-  height: 2px;
-  background: var(--accent);
-  box-shadow: 0 0 8px var(--accent);
+  display: none;
 }
 
 .navActions {
@@ -413,6 +406,7 @@ li {
 .hero-right {
   position: relative;
   width: 40%;
+   padding-top: 80px;
 }
 
 .hero-right-image {

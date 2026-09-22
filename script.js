@@ -34,3 +34,15 @@ window.addEventListener("scroll", () => {
   navBarInner.style.padding =
     window.scrollY > 20 ? "0.7rem 3rem" : "1.1rem 3rem";
 });
+
+const navLinks = document.querySelectorAll(".navMenu a");
+
+navLinks.forEach((link) => {
+  link.addEventListener("click", () => {
+    navLinks.forEach((item) => {
+      item.classList.remove("active");
+    });
+
+    link.classList.add("active");
+  });
+});
